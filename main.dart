@@ -1,10 +1,11 @@
-String sayHello(String name) {
-  return ("hello $name nice to meet you!!");
+String sayHello({
+  required String name,
+  required int age,
+  required String country,
+}) {
+  return ("hello $name, you are $age years old. and you came from $country!!");
 }
-// same code : String sayHello(String, name) => "hello $name nice to meet you!!";
-
-num plus(num a, num b) => a + b;
 
 void main() {
-  print(sayHello("Nico"));
+  print(sayHello(age: 40, country: 'cuba', name: 'Park'));
 }
