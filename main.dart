@@ -1,7 +1,8 @@
-String capitalizeName(String? name) =>
-    // name != null ? name.toUpperCase() : 'ANON';
-    name?.toUpperCase() ?? 'ANON';
+typedef ListOfInts = List<int>;
 
-void main() {
-  capitalizeName('nico');
+ListOfInts reverseListOfNumbers(ListOfInts list) {
+  var reversed = list.reversed;
+  return reversed.toList();
 }
+
+void main() {}
