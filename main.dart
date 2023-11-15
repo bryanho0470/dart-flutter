@@ -1,10 +1,10 @@
+String sayHello(String name) {
+  return ("hello $name nice to meet you!!");
+}
+// same code : String sayHello(String, name) => "hello $name nice to meet you!!";
+
+num plus(num a, num b) => a + b;
+
 void main() {
-  Set<String> player = {'nico', 'park'};
-  // var player = {'nico', 'park'}; same
-  player.add("park");
-  player.add("park");
-  player.add("park");
-  player.add("park");
-  player.add("park");
-  print(player);
+  print(sayHello("Nico"));
 }
