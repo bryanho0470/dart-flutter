@@ -1,8 +1,7 @@
-typedef ListOfInts = List<int>;
+typedef UsenInfo = Map<String, String>;
 
-ListOfInts reverseListOfNumbers(ListOfInts list) {
-  var reversed = list.reversed;
-  return reversed.toList();
+String sayHi(UsenInfo userInfo) {
+  return "Hi ${userInfo['name']}";
 }
 
 void main() {}
