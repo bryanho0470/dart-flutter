@@ -1,7 +1,13 @@
-typedef UsenInfo = Map<String, String>;
+class Player {
+  final String name = 'nico';
+  int xp = 1500;
 
-String sayHi(UsenInfo userInfo) {
-  return "Hi ${userInfo['name']}";
+  void sayHello() {
+    print('say hello $name'); // dont need {this.name}
+  }
 }
 
-void main() {}
+void main() {
+  var player = Player(); //new Player() is also possible
+  player.sayHello();
+}
