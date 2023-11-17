@@ -12,6 +12,7 @@ class Player {
 
 void main() {
   var nico = Player(name: "nico", xp: 200, team: "Green")
+  var potato = nico
     ..name = "las"
     ..team = "Red"
     ..xp = 80
