@@ -1,33 +1,29 @@
-abstract class Human {
-  void walk();
-}
+import 'dart:html';
 
+class Human {
+  final String name;
 
-enum Team { red, blue, green }
-enum XpLevel {beginner, medium, pro}
-
-class Player extends Human {
-  String name;
-  Team team;
-  XpLevel xp;
-
-  void walk() {
-    print("Im walking")
-  }
+  Human({required this.name}); //constructor
 
   void sayHello() {
-    print(
-        "say hello $name I'm in $team team. I have experience for $xp years."); // dont need {this.name}
+    print("hello my name is $name");
   }
+}
 
-  Player({required this.name, required this.xp, required this.team});
+enum Team { blue, red }
+
+class Player extends Human {
+  final Team team;
+
+  Player({required this.team, required String name}) : super(name: name);
+
+  @override
+  void sayHello() {
+    super.sayHello();
+    print("and Im in $team team")
+  }
 }
 
 void main() {
-  var nico = Player(name: "nico", xp: XpLevel.beginner, team: Team.blue)
-  var potato = nico
-    ..name = "las"
-    ..team = Team.red
-    ..xp = XpLevel.pro
-    ..sayHello();
+  var player = Player(team: Team.blue, name: "nico");
 }
