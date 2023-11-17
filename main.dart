@@ -1,10 +1,19 @@
+abstract class Human {
+  void walk();
+}
+
+
 enum Team { red, blue, green }
 enum XpLevel {beginner, medium, pro}
 
-class Player {
+class Player extends Human {
   String name;
   Team team;
   XpLevel xp;
+
+  void walk() {
+    print("Im walking")
+  }
 
   void sayHello() {
     print(
