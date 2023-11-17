@@ -1,6 +1,17 @@
-import 'dart:html';
+class Strong {
+  final double strengthLevel = 1993.22;
+}
 
-class Human {
+class QuickRunner {
+  quickRun() {
+    print('im very fassssssssst!!');
+  }
+}
+
+class Tall {}
+
+class Human with Strong, QuickRunner, Tall {
+  // when we use Mixins the refered class should not have constructor
   final String name;
 
   Human({required this.name}); //constructor
@@ -27,4 +38,5 @@ class Player extends Human {
 
 void main() {
   var player = Player(team: Team.blue, name: "nico");
+  player.quickRun();
 }
