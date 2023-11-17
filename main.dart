@@ -1,5 +1,5 @@
 class Player {
-  final String name, team;
+  String name, team;
   int xp;
 
   void sayHello() {
@@ -7,32 +7,13 @@ class Player {
         "say hello $name I'm in $team team. I have experience for $xp years."); // dont need {this.name}
   }
 
-  Player.fromJson(Map<String, dynamic> playerJson)
-      : name = playerJson['name'],
-        team = playerJson['team'],
-        xp = playerJson['xp'];
+  Player({required this.name, required this.xp, required this.team});
 }
 
 void main() {
-  var apiData = [
-    {
-      "name": "nico",
-      "team": "red",
-      "xp": 0,
-    },
-    {
-      "name": "park",
-      "team": "green",
-      "xp": 10,
-    },
-    {
-      "name": "lynn",
-      "team": "bule",
-      "xp": 20,
-    },
-  ];
-  apiData.forEach((playerJson) {
-    var player = Player.fromJson(playerJson);
-    player.sayHello();
-  });
+  var nico = Player(name: "nico", xp: 200, team: "Green")
+    ..name = "las"
+    ..team = "Red"
+    ..xp = 80
+    ..sayHello();
 }
