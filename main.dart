@@ -1,42 +1,92 @@
-class Strong {
-  final double strengthLevel = 1993.22;
-}
+typedef MapDictionary = Map<String, String>;
+typedef ListWords = List<String>;
 
-class QuickRunner {
-  quickRun() {
-    print('im very fassssssssst!!');
+class Dictionary {
+  MapDictionary myDictionary = {};
+
+  Dictionary() {
+    myDictionary['KIMCH'] = "Spicy vegi";
+    myDictionary['ORANGE'] = "Orange ball";
   }
-}
 
-class Tall {}
-
-class Human with Strong, QuickRunner, Tall {
-  // when we use Mixins the refered class should not have constructor
-  final String name;
-
-  Human({required this.name}); //constructor
-
-  void sayHello() {
-    print("hello my name is $name");
+  void get(String word) {
+    print("your search word mean '${myDictionary[word]}'");
   }
-}
 
-enum Team { blue, red }
+  void count() {
+    print("There are ${myDictionary.length} words");
+  }
 
-class Player extends Human {
-  final Team team;
+  void add(String word, String description) {
+    myDictionary[word] = description;
+    print("your ${word} added!!");
+  }
 
-  Player({required this.team, required String name})
-      : super(name: name); // constructor
+  void updateWord(String word, String description) {
+    myDictionary[word] = description;
+    print("your ${word} updated!!");
+  }
 
-  @override
-  void sayHello() {
-    super.sayHello();
-    print("and Im in $team team");
+  void upsert(String word, String description) {
+    if (myDictionary.containsKey(word)) {
+      updateWord(word, description);
+      print("your $word existed. updated!!");
+    } else {
+      add(word, description);
+      print("your $word dose't exist. added!!");
+    }
+  }
+
+  void exsits(String word) {
+    if (myDictionary.containsKey(word)) {
+      print("$word exists!!");
+    } else {
+      print("$word dosen't exist!!");
+    }
+  }
+
+  void bulkAdd(MapDictionary newWordsSet) {
+    myDictionary.addAll(newWordsSet);
+    print("Adding done!!");
+  }
+
+  void delete(String word) {
+    myDictionary.remove(word);
+    print("your ${word} removed!!");
+  }
+
+  void bulkDelete(ListWords words) {
+    for (var word in words) {
+      myDictionary.remove(word);
+    }
+    print('remove done!!');
   }
 }
 
 void main() {
-  var player = Player(team: Team.blue, name: "nico");
-  player.quickRun();
+  var dictionary = Dictionary();
+  print(dictionary.myDictionary);
+  dictionary.count();
+  dictionary.get('KIMCH');
+  dictionary.add('DUBU', 'white spongy');
+  dictionary.get('DUBU');
+  dictionary.count();
+  print(dictionary.myDictionary);
+  dictionary.delete("DUBU");
+  print(dictionary.myDictionary);
+  dictionary.updateWord("KIMCH", "CHINESS FOOD");
+  print(dictionary.myDictionary);
+  dictionary.upsert("KIMCH", "KOREAN FOOD");
+  print(dictionary.myDictionary);
+  dictionary.upsert("CHIJIMI", "Vegi pancake");
+  print(dictionary.myDictionary);
+  dictionary.exsits("KIMCH");
+  dictionary.exsits("DUBU");
+  dictionary.bulkAdd({
+    "BAB": "Steamed RICE",
+    "GUKBAB": "Witch's stew",
+  });
+  print(dictionary.myDictionary);
+  dictionary.bulkDelete(['BAB', 'GUKBAB']);
+  print(dictionary.myDictionary);
 }
